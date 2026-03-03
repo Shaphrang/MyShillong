@@ -1,29 +1,35 @@
+//lib\main.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyShillongApp());
+import 'core/config/supabase_config.dart';
+import 'modules/home/presentation/pages/home_page.dart';
+import 'app/main_navigation.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: SupabaseConfig.url,
+    anonKey: SupabaseConfig.anonKey,
+  );
+
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyShillongApp extends StatelessWidget {
-  const MyShillongApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MyShillong',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            "MyShillong\nYour City. Your Deals.",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 22),
-          ),
-        ),
-      ),
+      home: MainNavigation(),
     );
   }
 }
