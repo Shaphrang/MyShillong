@@ -38,7 +38,7 @@ class OfferCard extends StatelessWidget {
                   height: 180,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) =>
+                  errorBuilder: (_, _, _) =>
                       Container(height: 180, color: Colors.grey.shade300),
                 ),
               ),

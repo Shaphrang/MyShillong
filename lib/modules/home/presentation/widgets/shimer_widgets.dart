@@ -8,7 +8,7 @@ class HomeShimmer extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: 6,
-      itemBuilder: (_, __) => Container(
+      itemBuilder: (_, _) => Container(
         margin: const EdgeInsets.only(bottom: 16),
         height: 180,
         decoration: BoxDecoration(

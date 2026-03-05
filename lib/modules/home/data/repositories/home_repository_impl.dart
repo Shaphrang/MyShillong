@@ -34,15 +34,15 @@ class HomeRepositoryImpl implements HomeRepository {
     final model = HomeDataModel.fromJson(json);
 
     // ✅ Map JSON → Domain Entities
-final categories = (model.categories as List)
+final categories = (model.categories)
     .map((e) => CategoryModel.fromJson(e).toEntity())
     .toList();
 
-final foodOffers = (model.foodOffers as List)
+final foodOffers = (model.foodOffers)
     .map((e) => OfferModel.fromJson(e).toEntity())
     .toList();
 
-final clothingOffers = (model.clothingOffers as List)
+final clothingOffers = (model.clothingOffers)
     .map((e) => OfferModel.fromJson(e).toEntity())
     .toList();
 final homeData = HomeData(

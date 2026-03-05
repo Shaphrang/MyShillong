@@ -5,6 +5,8 @@ import '../sections/banner_sections.dart';
 import '../providers/home_providers.dart';
 import '../sections/best_deals_section.dart';
 import '../sections/category_section.dart';
+import '../sections/welcome_hero_section.dart';
+import '../sections/category_card_section.dart';
 import '../widgets/shimer_widgets.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -31,7 +33,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final state = ref.watch(homeControllerProvider);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
+      backgroundColor: const Color(0xFFF6F7FB),
       body: SafeArea(
         child: state.when(
           loading: () => const HomeShimmer(),
@@ -41,15 +43,21 @@ class _HomePageState extends ConsumerState<HomePage> {
               physics: const BouncingScrollPhysics(),
               slivers: [
 
-SliverToBoxAdapter(child: _WelcomeSection()),
+//lib\modules\home\presentation\pages\home_page.dart
 
-SliverToBoxAdapter(child: SizedBox(height: 16)),
+SliverToBoxAdapter(child: WelcomeHeroSection()),
+
+SliverToBoxAdapter(child: SizedBox(height: 10)),
+
+SliverToBoxAdapter(child: CategoryCardSection()),
+
+SliverToBoxAdapter(child: SizedBox(height: 10)),
 
 SliverToBoxAdapter(child: BannerSection()),
 
-SliverToBoxAdapter(child: SizedBox(height: 20)),
+SliverToBoxAdapter(child: SizedBox(height: 12)),
 
-SliverToBoxAdapter(child: CategoryChips()),
+SliverToBoxAdapter(child: CategorySection()),
 
 SliverToBoxAdapter(child: SizedBox(height: 20)),
 
@@ -76,70 +84,6 @@ SliverToBoxAdapter(
     );
   }
 }
-
-class _WelcomeSection extends StatelessWidget {
-  const _WelcomeSection();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFF16A34A),
-            Color(0xFF0F7B53),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(30),
-        ),
-      ),
-      child: Column(
-        children: [
-
-          /// Top Row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Icon(Icons.menu, color: Colors.white),
-              Text(
-                "MyShillong",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              Icon(Icons.notifications_none, color: Colors.white),
-            ],
-          ),
-
-          const SizedBox(height: 20),
-
-          /// Search
-          Container(
-            height: 48,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const TextField(
-              decoration: InputDecoration(
-                hintText: "Search deals...",
-                border: InputBorder.none,
-                prefixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 
 class _ErrorState extends StatelessWidget {
   final String message;

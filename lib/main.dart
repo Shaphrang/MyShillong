@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/config/supabase_config.dart';
-import 'modules/home/presentation/pages/home_page.dart';
 import 'app/main_navigation.dart';
 
 Future<void> main() async {

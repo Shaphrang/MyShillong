@@ -1,3 +1,4 @@
+//lib\modules\home\presentation\sections\banner_sections.dart
 import 'package:flutter/material.dart';
 
 class BannerSection extends StatelessWidget {
